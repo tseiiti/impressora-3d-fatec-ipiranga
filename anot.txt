@@ -13,9 +13,111 @@ z offset do menu
 salvar configuração
 
 
-
 problemas:
+
+não tem os scripts g-code de início e fim!!!
+
 suporte do filamento torto
 não tem cd
 faltando trava?
 faltando documentos
+
+
+Introdução
+https://www.youtube.com/watch?v=_Qc6ff-S1Ms&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+
+Abertura da caixa e primeiros passos
+https://www.youtube.com/watch?v=iF1pC5Q5WhE&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+
+Conhecendo as partes importantes da impressora
+https://www.youtube.com/watch?v=w54rut4GJ58&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+https://www.youtube.com/watch?v=N4Kysj6HQxg&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+
+Iniciando sua primeira impressão
+https://www.youtube.com/watch?v=gmcRenzVyQY&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+
+Simplify3D
+https://www.youtube.com/watch?v=deXAVxkFhT8&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+https://www.youtube.com/watch?v=miVtjPmkBqg&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+https://www.youtube.com/watch?v=fUgM-PKnUOE&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+https://www.youtube.com/watch?v=f4jqLZNxgY8&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+https://www.youtube.com/watch?v=Ptr483FJVeI&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+https://www.youtube.com/watch?v=y54RkUITivg&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+
+
+CURA
+https://www.youtube.com/watch?v=nGYxEnnQzhw&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+https://www.youtube.com/watch?v=GJW18M80LuA&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+https://www.youtube.com/watch?v=5oDmiTVXtQI&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+https://www.youtube.com/watch?v=S2eIhFqLH6I&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+https://www.youtube.com/watch?v=zIx4tzTSIAE&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+https://www.youtube.com/watch?v=j_nMgXZHAZs&embeds_referring_euri=https%3A%2F%2Fapp.nutror.com%2F
+
+
+
+
+???
+G90
+M82
+M106 S0
+M140 S110
+M190 S110
+
+g-code inicial no arquivo
+M109 S100; FAZ AQUECIMENTO DO BICO
+G28; HOME GERAL
+M400
+G29 V4 T ; AUTO NIVELAMENTO
+M400
+M104 S245; FAZ PRE AQUECIMENTO DO BICO
+G1 X1 Y1 Z0.8 F1000; VAI PRA PONTO DE PURGA
+M109 S245; FAZ AQUECIMENTO DO BICO
+G92 E0; RESETA EXTRUSOR
+G1 X1.0 E9.0 F1000.0 ; PURGA
+G1 X100.0 E12.5 F1000.0 ; PURGA
+M117 IMPRIMINDO...
+M400
+
+g-code final no arquivo
+M107 ; DESLIGA FAN
+G1 X-8
+G1 Y100
+G1 Z240
+M104 S0 ; DESLIGA AQUECIMENTO BICO
+M140 S0 ; DESLIGA AQUECIMENTO MESA
+M84 ; DESLIGA MOTORES
+M300 S4 P1000 ; GERA BEEP
+
+
+
+
+
+g-code start errado
+M400
+G28; HOME GERAL
+M400
+G29; AUTO NIVELAMENTO
+G1 Z10 F12000
+M400
+G1 X110 Y110
+M400
+G1 Z0.0
+M400
+G1 Z10
+M400
+G27
+M400
+G92 E0; RESETA EXTRUSOR
+G1 E20 F500;
+G1 E-5;
+G92 E0; RESETA EXTRUSOR
+M117 Imprimindo...
+M400
+
+g-code end errado
+M104 S0 ; DESLIGA AQUECIMENTO BICO
+M140 S0 ; DESLIGA AQUECIMENTO MESA
+M107 ; DESLIGA FAN
+G27
+G1 Z500
+M84 ; DESLIGA MOTORES
